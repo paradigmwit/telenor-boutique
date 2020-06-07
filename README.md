@@ -2,12 +2,12 @@
 
 ### Installation / Startup
 
-#####Maven
+##### Maven
 - `git clone https://github.com/paradigmwit/telenor-boutique.git`
 - `cd telenor-boutique`
 - `mvn spring-boot:run`
 
-#####Docker
+##### Docker
 - `docker pull fahdmkhan/telenor-boutique:latest`
 - `docker run -p 8080:8080 --rm -it fahdmkhan/telenor-boutique`
 
