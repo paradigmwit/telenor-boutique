@@ -1,0 +1,180 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Phones</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.telenor.boutique.entity</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Phones (com.telenor.boutique.entity)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Phones</td>
+<td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+  <span class="absValue">
+    (7/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (8/ 24)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">Phones$HibernateProxy$xAe12Wy5</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    53.8%
+  </span>
+  <span class="absValue">
+    (7/ 13)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    33.3%
+  </span>
+  <span class="absValue">
+    (8/ 24)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.telenor.boutique.entity;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;
+<i>4</i>&nbsp;import javax.persistence.*;
+<i>5</i>&nbsp;
+<i>6</i>&nbsp;@Entity
+<i>7</i>&nbsp;@Table(name = &quot;phones&quot;)
+<i>8</i>&nbsp;@SequenceGenerator(name=&quot;seq_phones&quot;, initialValue=1, allocationSize=1)
+<i>9</i>&nbsp;public class Phones extends AbstractProduct {
+<i>10</i>&nbsp;
+<i>11</i>&nbsp;    @Id
+<i>12</i>&nbsp;    @Column(name =&quot;phone_id&quot;)
+<i>13</i>&nbsp;    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator=&quot;seq_phones&quot;)
+<i>14</i>&nbsp;    private Integer phoneId;
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    @Column(name = &quot;property_string&quot;)
+<i>17</i>&nbsp;    private String propertyString;
+<i>18</i>&nbsp;
+<i>19</i>&nbsp;    @Column(name = &quot;color&quot;)
+<i>20</i>&nbsp;    private String color;
+<i>21</i>&nbsp;
+<i>22</i>&nbsp;    @Column(name = &quot;price&quot;)
+<i>23</i>&nbsp;    private Integer price;
+<i>24</i>&nbsp;
+<i>25</i>&nbsp;    @Column(name = &quot;address&quot;)
+<i>26</i>&nbsp;    private String address;
+<i>27</i>&nbsp;
+<b class="fc"><i>28</i>&nbsp;    public Phones() {</b>
+<b class="fc"><i>29</i>&nbsp;    }</b>
+<i>30</i>&nbsp;
+<b class="nc"><i>31</i>&nbsp;    public Phones(String propertyString, String color, Integer price, String address) {</b>
+<b class="nc"><i>32</i>&nbsp;        this.propertyString = propertyString;</b>
+<b class="nc"><i>33</i>&nbsp;        this.color = color;</b>
+<b class="nc"><i>34</i>&nbsp;        this.price = price;</b>
+<b class="nc"><i>35</i>&nbsp;        this.address = address;</b>
+<b class="nc"><i>36</i>&nbsp;    }</b>
+<i>37</i>&nbsp;
+<i>38</i>&nbsp;    public String getPropertyString() {
+<b class="fc"><i>39</i>&nbsp;        return propertyString;</b>
+<i>40</i>&nbsp;    }
+<i>41</i>&nbsp;
+<i>42</i>&nbsp;    public Integer getPhoneId() {
+<b class="fc"><i>43</i>&nbsp;        return phoneId;</b>
+<i>44</i>&nbsp;    }
+<i>45</i>&nbsp;
+<i>46</i>&nbsp;    public void setPhoneId(Integer phoneId) {
+<b class="nc"><i>47</i>&nbsp;        this.phoneId = phoneId;</b>
+<b class="nc"><i>48</i>&nbsp;    }</b>
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    public void setPropertyString(String propertyString) {
+<b class="nc"><i>51</i>&nbsp;        this.propertyString = propertyString;</b>
+<b class="nc"><i>52</i>&nbsp;    }</b>
+<i>53</i>&nbsp;
+<i>54</i>&nbsp;    public String getColor() {
+<b class="fc"><i>55</i>&nbsp;        return color;</b>
+<i>56</i>&nbsp;    }
+<i>57</i>&nbsp;
+<i>58</i>&nbsp;    public void setColor(String color) {
+<b class="nc"><i>59</i>&nbsp;        this.color = color;</b>
+<b class="nc"><i>60</i>&nbsp;    }</b>
+<i>61</i>&nbsp;
+<i>62</i>&nbsp;    public Integer getPrice() {
+<b class="fc"><i>63</i>&nbsp;        return price;</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    public void setPrice(Integer price) {
+<b class="nc"><i>67</i>&nbsp;        this.price = price;</b>
+<b class="nc"><i>68</i>&nbsp;    }</b>
+<i>69</i>&nbsp;
+<i>70</i>&nbsp;    public String getAddress() {
+<b class="fc"><i>71</i>&nbsp;        return address;</b>
+<i>72</i>&nbsp;    }
+<i>73</i>&nbsp;
+<i>74</i>&nbsp;    public void setAddress(String address) {
+<b class="nc"><i>75</i>&nbsp;        this.address = address;</b>
+<b class="nc"><i>76</i>&nbsp;    }</b>
+<i>77</i>&nbsp;
+<i>78</i>&nbsp;    @Override
+<i>79</i>&nbsp;    public String toString() {
+<b class="fc"><i>80</i>&nbsp;        return &quot;Phones{&quot; +</b>
+<i>81</i>&nbsp;                &quot;propertyString=&#39;&quot; + propertyString + &#39;\&#39;&#39; +
+<i>82</i>&nbsp;                &quot;, color=&#39;&quot; + color + &#39;\&#39;&#39; +
+<i>83</i>&nbsp;                &quot;, price=&quot; + price +
+<i>84</i>&nbsp;                &quot;, address=&#39;&quot; + address + &#39;\&#39;&#39; +
+<i>85</i>&nbsp;                &#39;}&#39;;
+<i>86</i>&nbsp;    }
+<i>87</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-07 23:52</div>
+</div>
+</body>
+</html>

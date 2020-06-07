@@ -1,0 +1,183 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ProductController</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.telenor.boutique.controller</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ProductController (com.telenor.boutique.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ProductController</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (34/ 34)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.telenor.boutique.controller;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.telenor.boutique.config.Constants;
+<i>4</i>&nbsp;import com.telenor.boutique.dto.Data;
+<i>5</i>&nbsp;import com.telenor.boutique.dto.Product;
+<i>6</i>&nbsp;import com.telenor.boutique.dto.QueryObject;
+<i>7</i>&nbsp;import com.telenor.boutique.entity.AbstractProduct;
+<i>8</i>&nbsp;import com.telenor.boutique.entity.Phones;
+<i>9</i>&nbsp;import com.telenor.boutique.entity.Subscriptions;
+<i>10</i>&nbsp;import com.telenor.boutique.service.ProductService;
+<i>11</i>&nbsp;import com.telenor.boutique.service.specbuilder.ProductTypeNotFoundException;
+<i>12</i>&nbsp;import org.slf4j.Logger;
+<i>13</i>&nbsp;import org.slf4j.LoggerFactory;
+<i>14</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+<i>15</i>&nbsp;import org.springframework.http.ResponseEntity;
+<i>16</i>&nbsp;import org.springframework.web.bind.annotation.GetMapping;
+<i>17</i>&nbsp;import org.springframework.web.bind.annotation.RequestMapping;
+<i>18</i>&nbsp;import org.springframework.web.bind.annotation.RequestParam;
+<i>19</i>&nbsp;import org.springframework.web.bind.annotation.RestController;
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;import java.util.ArrayList;
+<i>22</i>&nbsp;import java.util.List;
+<i>23</i>&nbsp;import java.util.Map;
+<i>24</i>&nbsp;import java.util.Optional;
+<i>25</i>&nbsp;
+<i>26</i>&nbsp;@RestController
+<i>27</i>&nbsp;@RequestMapping(&quot;/api/v1&quot;)
+<b class="fc"><i>28</i>&nbsp;public class ProductController {</b>
+<i>29</i>&nbsp;
+<b class="fc"><i>30</i>&nbsp;    private Logger logger = LoggerFactory.getLogger(ProductController.class);</b>
+<i>31</i>&nbsp;
+<i>32</i>&nbsp;    @Autowired
+<i>33</i>&nbsp;    private ProductService productService;
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    @GetMapping(&quot;/product&quot;)
+<i>36</i>&nbsp;    public ResponseEntity&lt;Data&gt; getProduct(
+<i>37</i>&nbsp;            @RequestParam(value = &quot;type&quot;, required = false) Optional&lt;String&gt; type,
+<i>38</i>&nbsp;            @RequestParam(value = &quot;min_price&quot;, required = false) Optional&lt;Integer&gt; minPrice,
+<i>39</i>&nbsp;            @RequestParam(value = &quot;max_price&quot;, required = false) Optional&lt;Integer&gt; maxPrice,
+<i>40</i>&nbsp;            @RequestParam(value = &quot;city&quot;, required = false) Optional&lt;String&gt; city,
+<i>41</i>&nbsp;            @RequestParam(value = &quot;property&quot;, required = false) Optional&lt;String&gt; property,
+<i>42</i>&nbsp;            @RequestParam(value = &quot;property.color&quot;, required = false) Optional&lt;String&gt; propertyColor,
+<i>43</i>&nbsp;            @RequestParam(value = &quot;property.gb_limit_min&quot;, required = false) Optional&lt;Integer&gt; propertyGBLimitMin,
+<i>44</i>&nbsp;            @RequestParam(value = &quot;property.gb_limit_max&quot;, required = false) Optional&lt;Integer&gt; propertyGBLimitMax)
+<i>45</i>&nbsp;            throws ProductTypeNotFoundException  {
+<i>46</i>&nbsp;
+<b class="fc"><i>47</i>&nbsp;        QueryObject queryObject = new QueryObject(type, minPrice, maxPrice, city, property, propertyColor, propertyGBLimitMin, propertyGBLimitMax);</b>
+<b class="fc"><i>48</i>&nbsp;        logger.debug(queryObject.toString());</b>
+<i>49</i>&nbsp;
+<b class="fc"><i>50</i>&nbsp;        Map&lt;String, List&lt;? extends AbstractProduct&gt;&gt; productMap = productService.getProduct(queryObject);</b>
+<i>51</i>&nbsp;
+<b class="fc"><i>52</i>&nbsp;        return ResponseEntity.ok(mapEntityToDTO(productMap));</b>
+<i>53</i>&nbsp;    }
+<i>54</i>&nbsp;
+<i>55</i>&nbsp;    @GetMapping(&quot;/ping&quot;)
+<i>56</i>&nbsp;    public ResponseEntity&lt;String&gt; ping() {
+<b class="fc"><i>57</i>&nbsp;        String response = &quot;Service is up!&quot;;</b>
+<b class="fc"><i>58</i>&nbsp;        return ResponseEntity.ok(response);</b>
+<i>59</i>&nbsp;    }
+<i>60</i>&nbsp;
+<i>61</i>&nbsp;    @GetMapping(&quot;/products&quot;)
+<i>62</i>&nbsp;    public ResponseEntity&lt;List&lt;AbstractProduct&gt;&gt; getProducts() {
+<b class="fc"><i>63</i>&nbsp;        return ResponseEntity.ok(productService.getAllProducts());</b>
+<i>64</i>&nbsp;    }
+<i>65</i>&nbsp;
+<i>66</i>&nbsp;    //can be improved by passing list of AbstractProducts and using instance of to identify the type
+<i>67</i>&nbsp;    private Data mapEntityToDTO(Map&lt;String, List&lt;? extends AbstractProduct&gt;&gt; products) {
+<b class="fc"><i>68</i>&nbsp;        logger.debug(&quot;Mapping products - &quot; + products.toString());</b>
+<i>69</i>&nbsp;
+<b class="fc"><i>70</i>&nbsp;        Data data = new Data();</b>
+<b class="fc"><i>71</i>&nbsp;        List&lt;Product&gt; productList = new ArrayList&lt;&gt;();</b>
+<i>72</i>&nbsp;
+<b class="fc"><i>73</i>&nbsp;        if(products.keySet().contains(Constants.PHONE)){</b>
+<b class="fc"><i>74</i>&nbsp;            for(AbstractProduct entry: products.get(Constants.PHONE)) {</b>
+<b class="fc"><i>75</i>&nbsp;            Phones phone = (Phones) entry;</b>
+<b class="fc"><i>76</i>&nbsp;            Product product = new Product();</b>
+<b class="fc"><i>77</i>&nbsp;            product.setType(Constants.PHONE);</b>
+<b class="fc"><i>78</i>&nbsp;            product.setPrice(String.valueOf(phone.getPrice()));</b>
+<b class="fc"><i>79</i>&nbsp;            product.setProperties(phone.getPropertyString());</b>
+<b class="fc"><i>80</i>&nbsp;            product.setStoreAddress(phone.getAddress());</b>
+<b class="fc"><i>81</i>&nbsp;            productList.add(product);</b>
+<b class="fc"><i>82</i>&nbsp;            }</b>
+<i>83</i>&nbsp;        }
+<i>84</i>&nbsp;
+<b class="fc"><i>85</i>&nbsp;        if(products.keySet().contains(Constants.SUBSCRIPTION)){</b>
+<b class="fc"><i>86</i>&nbsp;            for(AbstractProduct entry: products.get(Constants.SUBSCRIPTION)) {</b>
+<b class="fc"><i>87</i>&nbsp;                Subscriptions subscription = (Subscriptions) entry;</b>
+<b class="fc"><i>88</i>&nbsp;                Product product = new Product();</b>
+<b class="fc"><i>89</i>&nbsp;                product.setType(Constants.SUBSCRIPTION);</b>
+<b class="fc"><i>90</i>&nbsp;                product.setPrice(String.valueOf(subscription.getPrice()));</b>
+<b class="fc"><i>91</i>&nbsp;                product.setProperties(subscription.getPropertyString());</b>
+<b class="fc"><i>92</i>&nbsp;                product.setStoreAddress(subscription.getAddress());</b>
+<b class="fc"><i>93</i>&nbsp;                productList.add(product);</b>
+<b class="fc"><i>94</i>&nbsp;            }</b>
+<i>95</i>&nbsp;        }
+<i>96</i>&nbsp;
+<b class="fc"><i>97</i>&nbsp;        data.setData(productList);</b>
+<b class="fc"><i>98</i>&nbsp;        return data;</b>
+<i>99</i>&nbsp;    }
+<i>100</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-07 23:52</div>
+</div>
+</body>
+</html>

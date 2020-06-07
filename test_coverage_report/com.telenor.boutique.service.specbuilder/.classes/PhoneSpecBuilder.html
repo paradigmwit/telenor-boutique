@@ -1,0 +1,106 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: PhoneSpecBuilder</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.telenor.boutique.service.specbuilder</a> ]
+</div>
+
+<h1>Coverage Summary for Class: PhoneSpecBuilder (com.telenor.boutique.service.specbuilder)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">PhoneSpecBuilder</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (6/ 6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.telenor.boutique.service.specbuilder;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.telenor.boutique.dto.QueryObject;
+<i>4</i>&nbsp;import com.telenor.boutique.entity.Phones;
+<i>5</i>&nbsp;import com.telenor.boutique.repository.specifications.PhonesSpecifications;
+<i>6</i>&nbsp;import org.springframework.data.jpa.domain.Specification;
+<i>7</i>&nbsp;import org.springframework.stereotype.Component;
+<i>8</i>&nbsp;
+<i>9</i>&nbsp;@Component
+<b class="fc"><i>10</i>&nbsp;public class PhoneSpecBuilder extends AbstractSpecBuilder {</b>
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    @Override
+<i>13</i>&nbsp;    public Specification&lt;Phones&gt; getSpec(QueryObject queryObject) {
+<i>14</i>&nbsp;
+<i>15</i>&nbsp;        Specification&lt;Phones&gt; phonesSpecification = Specification
+<b class="fc"><i>16</i>&nbsp;                .where(queryObject.getCity().isPresent() ? PhonesSpecifications.likeCity(queryObject.getCity().get()) : null)</b>
+<b class="fc"><i>17</i>&nbsp;                .and(queryObject.getMinPrice().isPresent() ? PhonesSpecifications.priceGreaterThanEqualTo(queryObject.getMinPrice().get()) : null)</b>
+<b class="fc"><i>18</i>&nbsp;                .and(queryObject.getMaxPrice().isPresent() ? PhonesSpecifications.priceLessThanEqualTo(queryObject.getMaxPrice().get()) : null)</b>
+<b class="fc"><i>19</i>&nbsp;                .and(queryObject.getPropertyColor().isPresent() ? PhonesSpecifications.equalToColor(queryObject.getPropertyColor().get()) : null );</b>
+<i>20</i>&nbsp;
+<b class="fc"><i>21</i>&nbsp;        return phonesSpecification;</b>
+<i>22</i>&nbsp;    }
+<i>23</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-07 23:52</div>
+</div>
+</body>
+</html>

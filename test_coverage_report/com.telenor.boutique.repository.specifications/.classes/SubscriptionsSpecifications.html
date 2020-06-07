@@ -1,0 +1,111 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: SubscriptionsSpecifications</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">com.telenor.boutique.repository.specifications</a> ]
+</div>
+
+<h1>Coverage Summary for Class: SubscriptionsSpecifications (com.telenor.boutique.repository.specifications)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SubscriptionsSpecifications</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    83.3%
+  </span>
+  <span class="absValue">
+    (5/ 6)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;package com.telenor.boutique.repository.specifications;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;import com.telenor.boutique.entity.Subscriptions;
+<i>4</i>&nbsp;import org.springframework.data.jpa.domain.Specification;
+<i>5</i>&nbsp;
+<b class="nc"><i>6</i>&nbsp;public final class SubscriptionsSpecifications {</b>
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;    public static Specification&lt;Subscriptions&gt; priceGreaterThanEqualTo(Integer minPrice) {
+<b class="fc"><i>9</i>&nbsp;        return (root, query, builder) -&gt; builder.greaterThanOrEqualTo(root.get(&quot;price&quot;), minPrice);</b>
+<i>10</i>&nbsp;    }
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    public static Specification&lt;Subscriptions&gt; priceLessThanEqualTo(Integer maxPrice) {
+<b class="fc"><i>13</i>&nbsp;        return (root, query, builder) -&gt; builder.lessThanOrEqualTo(root.get(&quot;price&quot;), maxPrice);</b>
+<i>14</i>&nbsp;    }
+<i>15</i>&nbsp;
+<i>16</i>&nbsp;    public static Specification&lt;Subscriptions&gt; likeCity(String city) {
+<b class="fc"><i>17</i>&nbsp;        return (root, query, builder) -&gt; builder.like(root.get(&quot;address&quot;), &quot;%&quot; + city + &quot;%&quot;);</b>
+<i>18</i>&nbsp;    }
+<i>19</i>&nbsp;
+<i>20</i>&nbsp;    public static Specification&lt;Subscriptions&gt; minLimitGreaterThanEqualTo(Integer minLimit) {
+<b class="fc"><i>21</i>&nbsp;        return (root, query, builder) -&gt; builder.greaterThanOrEqualTo(root.get(&quot;gbLimit&quot;), minLimit);</b>
+<i>22</i>&nbsp;    }
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    public static Specification&lt;Subscriptions&gt; minLimitLessThanEqualTo(Integer maxLimit) {
+<b class="fc"><i>25</i>&nbsp;        return (root, query, builder) -&gt; builder.lessThanOrEqualTo(root.get(&quot;gbLimit&quot;), maxLimit);</b>
+<i>26</i>&nbsp;    }
+<i>27</i>&nbsp;
+<i>28</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2020-06-07 23:52</div>
+</div>
+</body>
+</html>
